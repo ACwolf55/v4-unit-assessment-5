@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import './Dash.css';
 
@@ -65,7 +66,9 @@ class Dash extends Component {
 
     let mappedPosts = posts.map(post => {
       return <div className='content-box dash-post-box' key={post.post_id}>
+        <Link to = '/post/:id'>
           <h3>{post.title}</h3>
+          </Link>
           {
             post.author_username === this.props.username 
             ?
