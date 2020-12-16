@@ -27,7 +27,7 @@ register: async (req, res) => {
     //Send confirmation of registration
     res.status(200).send(newUser)
     },
-login: (req,res)=> {
+login: async (req,res)=> {
         const db = req.app.get('db')
         // Get necessary info off of req.body (email, password)
         const { username, password } = req.body
@@ -60,6 +60,15 @@ logout: (req, res) => {
     req.session.destroy()
     res.sendStatus(200) 
 },
+getUser: (req,res)=>{
+  if (req.session.user) {
+    res.status(200).send(req.session.user)
+  } else {
+    res.status(404).send('NOT FOUND 404')
+  }
+
+
+}
 
 
 

@@ -37,7 +37,7 @@ module.exports = {
         }
       }
     },
-    createPost: (req, res) => {
+    createPost: async (req, res) => {
       const db = req.app.get('db')
       const { author_id, title, img, content, date_created } = req.body
       const [newPost] = await db.createPost([author_id, title, img, content, date_created])
